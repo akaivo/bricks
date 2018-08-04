@@ -27,6 +27,7 @@ public class NetworkedLeftHand : NetworkedHand
 
 	private void Collect(Brick brick)
 	{
+		brick.GetComponent<PhotonView>().RequestOwnership();
 		PhotonNetwork.Destroy(brick.gameObject);
 		PulseController();
 	}

@@ -51,8 +51,10 @@ public class NetworkedRightHand : NetworkedHand
     {
         if (Snapper.TrySnapping(_activeBrick))
         {
-            PhotonNetwork.Instantiate(AvailabelBricksPrefabs[_currentBrickIndex].name, _activeBrick.transform.position,
-                _activeBrick.transform.rotation, 0).layer = LayerMask.NameToLayer("Bricks");
+            GameObject go = PhotonNetwork.Instantiate(AvailabelBricksPrefabs[_currentBrickIndex].name,
+                _activeBrick.transform.position,
+                _activeBrick.transform.rotation, 0);
+            go.layer = LayerMask.NameToLayer("Bricks");
             PulseController();
         }
     }
