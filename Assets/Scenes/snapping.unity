@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -229,13 +229,32 @@ Prefab:
       propertyPath: m_Name
       value: snapping brick
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &273217231 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
   m_PrefabInternal: {fileID: 273217230}
+--- !u!1 &273217232 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+  m_PrefabInternal: {fileID: 273217230}
+--- !u!114 &273217233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273217232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e157bec58c9c7584e875bd9688cc7ebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 738374800}
+  SnapDistance: 0.2
+  SnappingBrick: {fileID: 273217231}
 --- !u!1001 &415555787
 Prefab:
   m_ObjectHideFlags: 0
@@ -378,68 +397,52 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalPosition.y
       value: 0.397
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalPosition.z
       value: -0.174
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    - target: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
-      propertyPath: m_Name
-      value: brick
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9500000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
-  m_ParentPrefab: {fileID: 100100000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c9012abc1209b7145b45a5b611a63228, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &738374798 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
+  m_PrefabParentObject: {fileID: 4248486298080152, guid: c9012abc1209b7145b45a5b611a63228,
+    type: 2}
   m_PrefabInternal: {fileID: 738374797}
---- !u!1 &738374799 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100000, guid: 5b834084e4a00af47ba127bff31f51ca, type: 3}
-  m_PrefabInternal: {fileID: 738374797}
---- !u!114 &738374800
+--- !u!114 &738374800 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 738374799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114823940081452730, guid: c9012abc1209b7145b45a5b611a63228,
+    type: 2}
+  m_PrefabInternal: {fileID: 738374797}
   m_Script: {fileID: 11500000, guid: 37b64b4db0986e941916c53a378367a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MyType: {fileID: 11400000, guid: cc3d221fa1efac54787ca3b8777643bf, type: 2}
-  MySnapPositions:
-  - {fileID: 11400000, guid: 48a31083e67521d45accba4955abf91c, type: 2}
 --- !u!1 &1163723452
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +516,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1892916704}
-  - component: {fileID: 1892916705}
   m_Layer: 0
   m_Name: test snapping
   m_TagString: Untagged
@@ -536,17 +538,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 533.715, z: 0}
---- !u!114 &1892916705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1892916703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e157bec58c9c7584e875bd9688cc7ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 738374800}
-  SnapDistance: 0.2
-  SnappingBrick: {fileID: 273217231}

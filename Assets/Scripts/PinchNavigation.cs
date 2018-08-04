@@ -2,14 +2,15 @@
 using System.Collections;
 //using Valve.VR;
 using System;
+using Valve.VR;
 
 /* Aadam Kaivo */
 public class PinchNavigation : MonoBehaviour
 {
-    /*
     public GameObject rightGO;
     public GameObject leftGO;
     public float inertialStopSpeed = 0.1f;
+    public bool ScalingEnabled = true;
     private SteamVR_Controller.Device right { get { return SteamVR_Controller.Input((int)rightGO.GetComponent<SteamVR_TrackedObject>().index); } }
     private SteamVR_Controller.Device left { get { return SteamVR_Controller.Input((int)leftGO.GetComponent<SteamVR_TrackedObject>().index); } }
 
@@ -48,9 +49,9 @@ public class PinchNavigation : MonoBehaviour
         rightSmoothedPosition = GetMeanVector(rightPositions);
         leftSmoothedPosition = GetMeanVector(leftPositions);
 
-        if (right.GetTouch(grip) && left.GetTouch(grip))
+        if (right.GetPress(grip) && left.GetPress(grip))
         {
-            if (right.GetTouchDown(grip) || left.GetTouchDown(grip))
+            if (right.GetPressDown(grip) || left.GetPressDown(grip))
             {
                 //position
                 lastFramePosition = rightGO.transform.position;
@@ -60,8 +61,11 @@ public class PinchNavigation : MonoBehaviour
                 from.y = 0f;
 
                 //scale
-                initialScale = transform.localScale;
-                fromScale = vectorFromLeftToRight.magnitude;
+                if(ScalingEnabled)
+                {
+                    initialScale = transform.localScale;
+                    fromScale = vectorFromLeftToRight.magnitude;
+                }
             }
 
             //position
@@ -78,12 +82,19 @@ public class PinchNavigation : MonoBehaviour
             from = to;
 
             //scale
-            toScale = vectorFromLeftToRight.magnitude;
-            transform.localScale = initialScale * (fromScale / toScale);
+            if (ScalingEnabled)
+            {
+                toScale = vectorFromLeftToRight.magnitude;
+                transform.localScale = initialScale * (fromScale / toScale);
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+            }
         }
-        if (right.GetTouch(grip) && !left.GetTouch(grip))
+        if (right.GetPress(grip) && !left.GetPress(grip))
         {
-            if (right.GetTouchDown(grip))
+            if (right.GetPressDown(grip))
             {
                 //position
                 lastFramePosition = rightGO.transform.position;
@@ -95,14 +106,14 @@ public class PinchNavigation : MonoBehaviour
             transform.position = transform.position + moveDelta;
             lastFramePosition = thisFramePosition + moveDelta;
         }
-        if (right.GetTouchUp(grip) && left.GetTouch(grip))
+        if (right.GetPressUp(grip) && left.GetPress(grip))
         {
             //position
             lastFramePosition = leftGO.transform.position;
         }
-        if (left.GetTouch(grip) && !right.GetTouch(grip))
+        if (left.GetPress(grip) && !right.GetPress(grip))
         {
-            if (left.GetTouchDown(grip))
+            if (left.GetPressDown(grip))
             {
                 //position
                 lastFramePosition = leftGO.transform.position;
@@ -119,7 +130,7 @@ public class PinchNavigation : MonoBehaviour
         float currentUnscaledSpeed = moveDelta.magnitude / (transform.localScale.magnitude * Time.unscaledDeltaTime);
         if (currentUnscaledSpeed < inertialStopSpeed) moveDelta = Vector3.zero;
 
-        if (!left.GetTouch(grip) && !right.GetTouch(grip))
+        if (!left.GetPress(grip) && !right.GetPress(grip))
         {
             if(currentUnscaledSpeed != 0)
             {
@@ -144,6 +155,5 @@ public class PinchNavigation : MonoBehaviour
         }
         return new Vector3(x / positions.Count, y / positions.Count, z / positions.Count);
     }
-*/
 }
 
