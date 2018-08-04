@@ -14,8 +14,20 @@ public class Snap : MonoBehaviour
 	private Quaternion _myRotInTargetSpace;
 	private readonly List<Brick> _targets = new List<Brick>();
 
+	public GameObject SnappingBrickPrefab;
+	[HideInInspector]	
 	public Brick SnappingBrick;
 	public bool IsSnapped { get; private set; }
+
+	private void Start()
+	{
+		SnappingBrick = Instantiate(SnappingBrickPrefab).GetComponent<Brick>();
+	}
+
+	private void OnDestroy()
+	{
+		Destroy(SnappingBrick.gameObject);
+	}
 
 	private void Update ()
 	{
@@ -72,10 +84,5 @@ public class Snap : MonoBehaviour
 			});
 			
 		});
-	}
-
-	private bool OutsideSnapDistance(SnapPosition snapPoint)
-	{
-		return Vector3.Distance(_myPosInTargetSpace, snapPoint.LocalPosition) > SnapDistance;
 	}
 }

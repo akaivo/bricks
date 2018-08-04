@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceBrick : MonoBehaviour
+public class PlaceBrick : Photon.MonoBehaviour
 {
 
 	public Snap snapper;
