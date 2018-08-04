@@ -5,7 +5,7 @@ using UnityEngine;
 public class NetworkedRightHand : NetworkedHand
 {
     public Snap Snapper;
-
+    
     public List<GameObject> AvailabelBricksPrefabs;
     private List<Brick> _bricks = new List<Brick>();
     private Brick _activeBrick;
