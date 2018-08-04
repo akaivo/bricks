@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class SpawnAndMove : MonoBehaviour
 {
+    public GameObject prefab;
+    public SteamVR_TrackedController Controller;
+    private Transform networkedObject;
 
-	public GameObject handPrefab;
-	private Transform networkedHand;
-	
-	public void OnJoinedRoom()
-	{
-		Debug.Log("Spawn hand");
-		networkedHand = PhotonNetwork.Instantiate(handPrefab.name, transform.position, transform.rotation, 0).transform;
-		networkedHand.GetComponent<NetworkedHand>().SetController(GetComponent<SteamVR_TrackedController>());
-	}
+    public void OnJoinedRoom()
+    {
+        networkedObject = PhotonNetwork.Instantiate(prefab.name, transform.position, transform.rotation, 0).transform;
+        NetworkedHand hand = networkedObject.GetComponent<NetworkedHand>();
+        if (hand != null)
+        {
+            hand.SetController(Controller);
+        }
+    }
 
-	private void Update()
-	{
-		if(networkedHand)
-		{
-			networkedHand.position = transform.position;
-			networkedHand.rotation = transform.rotation;
-			networkedHand.localScale = transform.lossyScale;
-		}
-	}
+    private void Update()
+    {
+        if (networkedObject)
+        {
+            networkedObject.position = transform.position;
+            networkedObject.rotation = transform.rotation;
+            networkedObject.localScale = transform.lossyScale;
+        }
+    }
 }
