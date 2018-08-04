@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b64b4db0986e941916c53a378367a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Collectable: 1
   BrickType: {fileID: 11400000, guid: da00f2301972d8e44aa9e7db3e7a22ea, type: 2}
   MySnapPositions:
   - {fileID: 11400000, guid: c81487c159fb011419ae553a64041bed, type: 2}

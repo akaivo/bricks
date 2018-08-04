@@ -49,19 +49,17 @@ public class NetworkedRightHand : NetworkedHand
 
     protected override void HandleTriggerClick(object sender, ClickedEventArgs e)
     {
-        photonView.RPC("ReceiveTriggerClick", PhotonTargets.AllBufferedViaServer, transform.position,
-            transform.rotation);
+        if (Snapper.TrySnapping(_activeBrick))
+        {
+            photonView.RPC("ReceiveTriggerClick", PhotonTargets.AllBufferedViaServer, _activeBrick.transform.position,
+            _activeBrick.transform.rotation);
+            PulseController();
+        }
     }
 
     [PunRPC]
     private void ReceiveTriggerClick(Vector3 pos, Quaternion rot)
     {
-        transform.position = pos;
-        transform.rotation = rot;
-
-        if (Snapper.TrySnapping(_activeBrick))
-        {
-            Instantiate(_activeBrick.gameObject).layer = LayerMask.NameToLayer("Bricks");
-        }
+        Instantiate(_activeBrick.gameObject, pos, rot).layer = LayerMask.NameToLayer("Bricks");
     }
 }
