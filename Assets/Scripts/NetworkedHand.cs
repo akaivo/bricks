@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NetworkedHand : MonoBehaviour
+public abstract class NetworkedHand : Photon.MonoBehaviour
 {
 
 	private SteamVR_TrackedController _controller;
@@ -11,7 +11,10 @@ public abstract class NetworkedHand : MonoBehaviour
 	{
 		_controller = c;
 		_controller.TriggerClicked += HandleTriggerClick;
+		_controller.PadClicked += HandlePadClick;
 	}
+
+	protected abstract void HandlePadClick(object sender, ClickedEventArgs e);
 
 	protected abstract void HandleTriggerClick(object sender, ClickedEventArgs e);
 }

@@ -123,9 +123,6 @@ MonoBehaviour:
   SphereCastLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  SnappingBrickPrefab: {fileID: 1792044962567430, guid: 5e46c244cc66be344881b0399a0bef31,
-    type: 2}
-  SnappingBrick: {fileID: 0}
 --- !u!114 &114613912361319692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,3 +161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Snapper: {fileID: 114553986803213988}
+  AvailabelBricksPrefabs:
+  - {fileID: 1792044962567430, guid: 5e46c244cc66be344881b0399a0bef31, type: 2}
+  - {fileID: 1766576419370030, guid: a0826c4e09d290b44bb74fe3e8f9a757, type: 2}
+  - {fileID: 1109715978874104, guid: 280ebeda813f64d4c8e177d9e4fff67c, type: 2}
+  - {fileID: 1698280891563340, guid: c734d20a9303b39438474863feda763d, type: 2}
+  - {fileID: 1274850838445224, guid: 97f1811c2318f4442917f2102984496f, type: 2}

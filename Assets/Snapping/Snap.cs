@@ -14,54 +14,40 @@ public class Snap : MonoBehaviour
 	private Quaternion _myRotInTargetSpace;
 	private readonly List<Brick> _targets = new List<Brick>();
 
-	public GameObject SnappingBrickPrefab;
-	[HideInInspector]	
-	public Brick SnappingBrick;
-	public bool IsSnapped { get; private set; }
-
-	private void Start()
+	public bool TrySnapping(Brick brick)
 	{
-		SnappingBrick = Instantiate(SnappingBrickPrefab).GetComponent<Brick>();
-	}
-
-	private void OnDestroy()
-	{
-		Destroy(SnappingBrick.gameObject);
-	}
-
-	private void Update ()
-	{
-		PopulateTargets(SnapDistance);
+		PopulateTargets(SnapDistance, brick);
 
 		if (_targets.Count == 0)
 		{
-			SnappingBrick.transform.position = transform.position;
-			SnappingBrick.transform.rotation = transform.rotation;
-			IsSnapped = false;
+			brick.transform.position = transform.position;
+			brick.transform.rotation = transform.rotation;
+			return false;
 		}
 		else
 		{
-			SnapToBestTarget();
-			IsSnapped = true;
+			SnapToBestTarget(brick);
+			return true;
 		}
 	}
+	
+	
 
-	private List<Brick> PopulateTargets(float snapDistance)
+	private List<Brick> PopulateTargets(float snapDistance, Brick brick)
 	{
 		_targets.Clear();
 		Physics.OverlapSphere(transform.position, SnapDistance, SphereCastLayerMask.value).ForEach(c =>
 		{
 			Brick b = c.GetComponent<Brick>();
-			if (b != null && b.BrickType == SnappingBrick.BrickType)
+			if (b != null && b.BrickType == brick.BrickType)
 			{
 				_targets.Add(b);
-				Debug.Log(b.BrickType);
 			}
 		});
 		return _targets;
 	}
 
-	private void SnapToBestTarget()
+	private void SnapToBestTarget(Brick brick)
 	{
 		float min = float.MaxValue;
 		_targets.ForEach(target =>
@@ -69,7 +55,7 @@ public class Snap : MonoBehaviour
 			_myPosInTargetSpace = target.transform.InverseTransformPoint(transform.position);
 			_myRotInTargetSpace = Quaternion.Inverse(target.transform.rotation) * transform.rotation;
 			
-			SnapPositions sp = target.MySnapPositions.Find(snapPoints => snapPoints.ForBrickType == SnappingBrick.BrickType); 
+			SnapPositions sp = target.MySnapPositions.Find(snapPoints => snapPoints.ForBrickType == brick.BrickType); 
 			sp.Positions.ForEach(p =>
 			{
 				float dPos = Vector3.Distance(p.LocalPosition, _myPosInTargetSpace);
@@ -78,8 +64,8 @@ public class Snap : MonoBehaviour
 				if(d < min)
 				{
 					min = d;
-					SnappingBrick.transform.position = target.transform.TransformPoint(p.LocalPosition);
-					SnappingBrick.transform.rotation = target.transform.rotation * p.LocalRotation;
+					brick.transform.position = target.transform.TransformPoint(p.LocalPosition);
+					brick.transform.rotation = target.transform.rotation * p.LocalRotation;
 				}
 			});
 			
