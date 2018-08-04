@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e34a4bf6a4ed7a458f9e368e7e5e9c8, type: 3}
   m_Name: Standard 11
   m_EditorClassIdentifier: 
-  LocalPosition: {x: 0.1, y: 0.0014, z: 0.3}
+  LocalPosition: {x: 0.1, y: 0, z: 0.3}
   LocalRotation: {x: 0, y: 0.7071068, z: 0, w: -0.7071068}

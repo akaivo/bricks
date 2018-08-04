@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-	public BrickType MyType;
+	public BrickType BrickType;
 	public List<SnapPositions> MySnapPositions;
 }
