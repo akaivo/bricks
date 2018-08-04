@@ -4,6 +4,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SnapPositions : ScriptableObject
 {
-    public BrickType BrickType;
+    public BrickType ForBrickType;
     public List<SnapPosition> Positions;
 }
