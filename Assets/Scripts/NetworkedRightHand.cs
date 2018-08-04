@@ -54,7 +54,7 @@ public class NetworkedRightHand : NetworkedHand
             GameObject go = PhotonNetwork.Instantiate(AvailabelBricksPrefabs[_currentBrickIndex].name,
                 _activeBrick.transform.position,
                 _activeBrick.transform.rotation, 0);
-            go.layer = LayerMask.NameToLayer("Bricks");
+            go.GetComponent<Brick>().SetLayer(LayerMask.NameToLayer("Bricks"));
             PulseController();
         }
     }
