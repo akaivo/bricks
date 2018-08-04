@@ -51,8 +51,8 @@ public class NetworkedRightHand : NetworkedHand
     {
         if (Snapper.TrySnapping(_activeBrick))
         {
-            photonView.RPC("ReceiveTriggerClick", PhotonTargets.AllBufferedViaServer, _activeBrick.transform.position,
-            _activeBrick.transform.rotation);
+            PhotonNetwork.Instantiate(AvailabelBricksPrefabs[_currentBrickIndex].name, _activeBrick.transform.position,
+                _activeBrick.transform.rotation, 0).layer = LayerMask.NameToLayer("Bricks");
             PulseController();
         }
     }

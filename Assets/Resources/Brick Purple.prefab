@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23106139594234006}
   - component: {fileID: 65592703506252450}
   - component: {fileID: 114280325335625064}
+  - component: {fileID: 114701542306185108}
   m_Layer: 0
   m_Name: Brick Purple
   m_TagString: Untagged
@@ -111,3 +112,29 @@ MonoBehaviour:
   BrickType: {fileID: 11400000, guid: da00f2301972d8e44aa9e7db3e7a22ea, type: 2}
   MySnapPositions:
   - {fileID: 11400000, guid: c81487c159fb011419ae553a64041bed, type: 2}
+--- !u!114 &114701542306185108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1109715978874104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 0
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0

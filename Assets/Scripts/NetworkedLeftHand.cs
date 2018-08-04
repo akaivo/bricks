@@ -27,7 +27,7 @@ public class NetworkedLeftHand : NetworkedHand
 
 	private void Collect(Brick brick)
 	{
-		PhotonNetwork.dDestroy(brick.gameObject);
+		PhotonNetwork.Destroy(brick.gameObject);
 		PulseController();
 	}
 
