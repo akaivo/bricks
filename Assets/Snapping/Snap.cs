@@ -58,9 +58,7 @@ public class Snap : MonoBehaviour
 			SnapPositions sp = target.MySnapPositions.Find(snapPoints => snapPoints.ForBrickType == brick.BrickType); 
 			sp.Positions.ForEach(p =>
 			{
-				float dPos = Vector3.Distance(p.LocalPosition, _myPosInTargetSpace);
-				float dRot = Quaternion.Angle(p.LocalRotation, _myRotInTargetSpace) * Mathf.PI / 180f;
-				float d = Mathf.Sqrt(dPos * dPos + dRot * dRot);
+				var d = GetDistanceMatrix(p);
 				if(d < min)
 				{
 					min = d;
@@ -70,5 +68,27 @@ public class Snap : MonoBehaviour
 			});
 			
 		});
+	}
+
+	private float GetDistanceNormal(SnapPosition p)
+	{
+		float dPos = Vector3.Distance(p.LocalPosition, _myPosInTargetSpace);
+		float dRot = Quaternion.Angle(p.LocalRotation, _myRotInTargetSpace) * Mathf.PI / 180f;
+		float d = Mathf.Sqrt(dPos * dPos + dRot * dRot);
+		return d;
+	}
+	
+	private float GetDistanceMatrix(SnapPosition p)
+	{
+		Matrix4x4 a = Matrix4x4.TRS(p.LocalPosition, p.LocalRotation, Vector3.one);
+		Matrix4x4 b = Matrix4x4.TRS(_myPosInTargetSpace, _myRotInTargetSpace, Vector3.one);
+
+		float squareSum = 0f;
+		for (int i = 0; i < 16; i++)
+		{
+			squareSum += Mathf.Pow(a[i] - b[i], 2f);
+		}
+		
+		return Mathf.Sqrt(squareSum);
 	}
 }
