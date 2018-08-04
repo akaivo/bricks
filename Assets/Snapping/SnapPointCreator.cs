@@ -31,7 +31,7 @@ public class SnapPointCreator : MonoBehaviour
 		newSnapPosition.LocalPosition = myRelPos;
 		newSnapPosition.LocalRotation = myRelRot;
 		
-		AssetDatabase.CreateAsset(newSnapPosition, "Assets/Snapping/Snap Points/Standard/Standard "+ Counter +".asset");
+		AssetDatabase.CreateAsset(newSnapPosition, "Assets/Snapping/Snap Points/Standard Colored/Standard Colored to Standard Colored "+ Counter +".asset");
 		AssetDatabase.SaveAssets();
 		
 		SnapPositions.Positions.Add(newSnapPosition);
