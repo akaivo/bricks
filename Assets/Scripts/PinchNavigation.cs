@@ -6,7 +6,7 @@ using System;
 /* Aadam Kaivo */
 public class PinchNavigation : MonoBehaviour
 {
-/*
+    /*
     public GameObject rightGO;
     public GameObject leftGO;
     public float inertialStopSpeed = 0.1f;

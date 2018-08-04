@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class Snap : MonoBehaviour
 {
 
@@ -35,8 +36,14 @@ public class Snap : MonoBehaviour
 		Target.MySnapPositions[0].Positions.ForEach(p =>
 		{
 			float dPos = Vector3.Distance(p.LocalPosition, _myPosInTargetSpace);
-			float dRot = Quaternion.Angle(p.LocalRotation, _myRotInTargetSpace);
-			float d = 
+			float dRot = Quaternion.Angle(p.LocalRotation, _myRotInTargetSpace) * Mathf.PI / 180f;
+			float d = Mathf.Sqrt(dPos * dPos + dRot * dRot);
+			if(d < min)
+			{
+				min = d;
+				SnappingBrick.position = Target.transform.TransformPoint(p.LocalPosition);
+				SnappingBrick.rotation = Target.transform.rotation * p.LocalRotation;
+			}
 		});
 	}
 
