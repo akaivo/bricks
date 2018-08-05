@@ -11,14 +11,17 @@ public class EnableOnBoolEvent : MonoBehaviour
     private void Awake()
     {
         BooleanEvent.AddListener(ReactToShow);
+        Enable(false);
     }
 
     private void ReactToShow(bool value)
     {
-        GameObjects.ForEach(go =>
-        {
-            go.SetActive(value ^ invert);
-        });
+        Enable(value);
+    }
+
+    private void Enable(bool value)
+    {
+        GameObjects.ForEach(go => { go.SetActive(value ^ invert); });
     }
 
     private void OnDestroy()

@@ -71,7 +71,7 @@ public class WinChecking : MonoBehaviour
 
 	private bool BricksMatch(Brick a, Brick b)
 	{
-		if (a.transform.position != b.transform.position) return false;
+		if (Vector3.Distance(a.transform.position, b.transform.position) > 0.01f) return false;
 		if (!RotationsMatch(a.transform.rotation, b.transform.rotation)) return false;
 		if (a.BrickColor != b.BrickColor) return false;
 		return true;
@@ -80,7 +80,8 @@ public class WinChecking : MonoBehaviour
 	private bool RotationsMatch(Quaternion a, Quaternion b)
 	{
 		Quaternion bFlipped = b * Quaternion.AngleAxis(180f, Vector3.up);
-		return a == b || a == bFlipped;
+		
+		return Quaternion.Angle(a, b) < 0.01f || Quaternion.Angle(a, bFlipped) < 0.01f;
 	}
 
 	private List<Brick> FindAllPlayerBricks()

@@ -86,6 +86,8 @@ public class PinchNavigation : MonoBehaviour
             {
                 toScale = vectorFromLeftToRight.magnitude;
                 transform.localScale = initialScale * (fromScale / toScale);
+                float clamped = Mathf.Clamp(transform.localScale.x, 0.5f, 100f);
+                transform.localScale = Vector3.one * clamped;
             }
             else
             {
