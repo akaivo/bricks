@@ -12,7 +12,7 @@ public class WinChecking : MonoBehaviour
 	public LayerMask PlayerBricksLayerMask;
 	public BooleanEvent PlayEvent;
 	public BooleanEvent StoppedEvent;
-
+	public int WinMultiplier = 10;
 	private void Awake()
 	{
 		PlayEvent.AddListener(React);
@@ -48,6 +48,7 @@ public class WinChecking : MonoBehaviour
 			{
 				StoppedEvent.RaiseEvent(true);
 				StopAllCoroutines();
+				BrickAmount.Add(LevelBricks.Count * WinMultiplier);
 			}
 			yield return new WaitForSecondsRealtime(0.2f);
 		}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShowWin : MonoBehaviour
 {
     public GameObject WinShowObject;
+    public ParticleSystem ParticleSystem;
     public BooleanEvent WinEvent;
 
     private void Awake()
@@ -20,6 +21,7 @@ public class ShowWin : MonoBehaviour
     private void ShowWinObject(bool value)
     {
         WinShowObject.SetActive(value);
+        if(value) ParticleSystem.Play();
         StartCoroutine(WaitAndHide());
     }
 

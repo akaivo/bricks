@@ -13,7 +13,7 @@ public class ChangeLayerOnBoolEvent : MonoBehaviour
 
     private void ReactToShow(bool value)
     {
-        gameObject.layer = value ? LayerMask.NameToLayer("Default") : LayerMask.NameToLayer("Bricks");
+        gameObject.layer = value ? LayerMask.NameToLayer("Bricks") : LayerMask.NameToLayer("Default");
     }
 
     private void OnDestroy()

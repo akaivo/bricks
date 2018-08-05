@@ -49,8 +49,9 @@ public class NetworkedRightHand : NetworkedHand
 
     protected override void HandleTriggerClick(object sender, ClickedEventArgs e)
     {
-        if (Snapper.TrySnapping(_activeBrick))
+        if (Snapper.TrySnapping(_activeBrick) && BrickAmount.Value > 0)
         {
+            BrickAmount.Add(-1);
             GameObject go = PhotonNetwork.Instantiate(AvailabelBricksPrefabs[_currentBrickIndex].name,
                 _activeBrick.transform.position,
                 _activeBrick.transform.rotation, 0);

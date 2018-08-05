@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Configuration;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class Level : Photon.MonoBehaviour
 {
 
 	public float ShowTime = 3f;
@@ -29,6 +29,12 @@ public class Level : MonoBehaviour
 	}
 
 	public void StartLevel()
+	{
+		photonView.RPC("ReceiveStartLevel", PhotonTargets.AllViaServer);
+	}
+	
+	[PunRPC]
+	private void ReceiveStartLevel()
 	{
 		if (_running) return;
 		_running = true;

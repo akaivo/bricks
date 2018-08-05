@@ -45,4 +45,5 @@ MonoBehaviour:
   - ReceiveTriggerClick
   - ReceiveIndexChangeClick
   - ReceiveLayer
+  - ReceiveStartLevel
   DisableAutoOpenWizard: 1
