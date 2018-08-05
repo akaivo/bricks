@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Brick : Photon.MonoBehaviour
 {
+	public BrickColorEnum BrickColor;
 	public bool Collectable = true;
 	public BrickType BrickType;
 	public List<SnapPositions> MySnapPositions;

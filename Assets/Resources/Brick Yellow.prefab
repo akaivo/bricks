@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b64b4db0986e941916c53a378367a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrickColor: {fileID: 11400000, guid: 621b1e727be694e47b5d32496098780d, type: 2}
   Collectable: 1
   BrickType: {fileID: 11400000, guid: da00f2301972d8e44aa9e7db3e7a22ea, type: 2}
   MySnapPositions:
